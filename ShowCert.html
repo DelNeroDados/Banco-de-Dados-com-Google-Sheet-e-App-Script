@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análises</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <script src="https://kit.fontawesome.com/3bb780c407.js" crossorigin="anonymous"></script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+        --text: hsla(284, 30%, 10%, 0.8);
+        --text_dark: hsla(247, 57%, 5%, 0.6);
+        --background: #9dbbd4;
+        --background_dark: #d4a5b6;
+        --accent: hsla(236, 100%, 60%, 1);
+        --outline: hsla(247, 5%, 36%, 1);
+        --glass: hsla(247, 57%, 91%, 1);
+        --glass_trans: hsla(247, 57%, 91%, 0.05);
+        --azul: rgb(0, 140, 186);
+        }
+        html {
+            min-width: 100%;
+        }
+        body {
+            font-family: "Agdasima", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: large;
+            display: flexbox;
+            align-items: center;
+        }
+        select, input {
+            margin: 0px 0;
+        }
+        .icon {
+            font-size: 24px; /* Tamanho do ícone */
+            margin: 10px; /* Margem entre os ícones */
+        }
+
+        .tabelas{
+            align-content: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: var(--azul);
+        }
+
+        .col {
+            text-align: right;
+            font-weight: bold;
+        }
+        .cab {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .titulo {
+            justify-content: center;
+            width: 100%;
+        }
+        .ptitulo {
+            text-align: left;
+        }
+
+        .preencher {
+            box-sizing: border-box;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5%;
+
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--glass);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            width: 100%;
+            gap: 1rem;
+            max-width: 80%;
+            box-shadow: inset 0 0 1.25rem var(--glass),
+                0rem 0rem 2rem rgba(0, 140, 186, 0.3);
+            backdrop-filter: blur(0.1rem);
+            background: var(--glass_trans);
+        }
+        
+        .folhas {
+            display: flexbox;
+            width: 80%;
+            position: relative;
+            align-items: center;
+            margin: 0 auto;
+            margin-bottom: 5%;
+        }
+        .folha {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--glass);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            width: 100%;
+            gap: 1rem;
+            max-width: 80%;
+            box-shadow: inset 0 0 1.25rem var(--glass),
+                0rem 0rem 2rem rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(0.1rem);
+            background: var(--glass_trans);
+            text-align: center;
+            margin-bottom: 5%;
+
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*flex-wrap: wrap;*/
+            gap: 2rem;
+        }
+
+        .service-box {
+            flex: 100% 100%;
+            padding: 1rem 1rem 1rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: 0.2rem solid transparent;
+            transition: 0.5s ease;
+            
+        }
+
+        .service-box:hover {
+            border-color: var(var(--azul));
+            transform: scale(1.1);
+        }
+
+        .service-box i {
+            font-size: 7rem;
+            color: var(--azul);
+        }
+
+
+        label {
+            margin-bottom: 2%;
+        }
+        select {
+            margin-bottom: 2%;
+            height: 100%;
+        }
+        section h1 {
+            text-align: center;
+            font-size: xx-large;
+        }
+        section h3 {
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .img {
+            text-align: center;
+        }
+
+        i {
+            color:var(--azul);
+            flex: 100% 100%;
+            padding: 1rem 1rem 1rem;
+            border-radius: 100rem;
+            text-align: center;
+            border: 0.01rem solid transparent;
+            transition: 0.5s ease;
+        }
+        i:hover {
+            border-color: var(--azul);
+            transform: scale(1.5);
+        }
+        #icon-top {
+            border: none;
+            transition: 0.5s ease;
+        }
+        #icon-top:hover {
+            border: none;
+            transform: none;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--glass);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            width: 100%;
+            gap: 1rem;
+            max-width: 80%;
+            box-shadow: inset 0 0 1.25rem var(--glass),
+                0rem 0rem 2rem rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(0.1rem);
+            background: var(--glass_trans);
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            font-size: 180%;
+        }
+
+        @media only screen and (max-width: 959px) {
+            .list-item {
+                font-size: 40px;
+            }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 959px) {
+            .list-item {
+                font-size: 35px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .list-item {
+                font-size: 30px;
+            }
+        }
+        @media only screen and (min-width: 480px) and (max-width: 767px) {
+            .list-item {
+                font-size: 25px;
+            }
+        }
+        @media only screen and (max-width: 479px) {
+            .list-item {
+                font-size: 20px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="preencher">
+        <h1><i id="icon-top" class="fa-regular fa-folder"></i> PASTA DE CERTIFICADOS</h1>
+    </div>
+    <br>
+    <div class="folhas">
+        <div class="list secondary">
+            <h1>SHOW CLEAN</h1>
+              <hr>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link7" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 07 <blt>•</blt> 00/07/2024 - 00/07/2024</small>
+              </div>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link8" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 08 <blt>•</blt> 00/08/2024 - 00/08/2024</small>
+              </div>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link9" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 09 <blt>•</blt> 00/09/2024 - 00/09/2024</small>
+              </div>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link10" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 10 <blt>•</blt> 00/10/2024 - 00/10/2024</small>
+              </div>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link11" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 11 <blt>•</blt> 00/11/2024 - 00/11/2024</small>
+              </div>
+              <div class="list-item">
+                <div class="checkbox-wrapper">
+                    <i id="link12" class="fa-regular fa-file"></i>
+                </div>
+                <small class="due-date muted">Mês 12 <blt>•</blt> 00/12/2024 - 00/12/2024</small>
+              </div>
+        </div>
+    </div>
+</body>
+
+<script>
+// Define os links
+const links = {
+
+    link7: "",
+    link8: "",
+    link9: "",
+    link10: "",
+    link11: "",
+    link12: ""
+    };
+
+    // Adiciona eventos de clique para redirecionar
+    document.getElementById("link7").onclick = function() {
+        window.location.href = links.link7;
+    };
+    document.getElementById("link8").onclick = function() {
+        window.location.href = links.link8;
+    };
+    document.getElementById("link9").onclick = function() {
+        window.location.href = links.link9;
+    };
+    document.getElementById("link10").onclick = function() {
+        window.location.href = links.link10;
+    };
+    document.getElementById("link11").onclick = function() {
+        window.location.href = links.link11;
+    };
+    document.getElementById("link12").onclick = function() {
+        window.location.href = links.link12;
+    };
+</script>
+
+<header>
+    <div class="copyright" style="text-align: center; font-size: smaller; position: relative; top: 90%; margin: 10% auto 0 auto;">
+        &copy; 2024 Del Nero Dados. All rights reserved.
+    </div>
+</header>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análises</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <script src="https://kit.fontawesome.com/3bb780c407.js" crossorigin="anonymous"></script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+        --text: hsla(284, 30%, 10%, 0.8);
+        --text_dark: hsla(247, 57%, 5%, 0.6);
+        --background: #9dbbd4;
+        --background_dark: #d4a5b6;
+        --accent: hsla(236, 100%, 60%, 1);
+        --outline: hsla(247, 5%, 36%, 1);
+        --glass: hsla(247, 57%, 91%, 1);
+        --glass_trans: hsla(247, 57%, 91%, 0.05);
+        }
+        html {
+            min-width: 100%;
+        }
+        body {
+            font-family: "Agdasima", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: large;
+            display: flexbox;
+            align-items: center;
+        }
+        select, input {
+            margin: 0px 0;
+        }
+        .icon {
+            font-size: 24px; /* Tamanho do ícone */
+            margin: 10px; /* Margem entre os ícones */
+        }
+
+        .tabelas{
+            align-content: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: rgb(0, 140, 186);
+        }
+
+        .col {
+            text-align: right;
+            font-weight: bold;
+        }
+        .cab {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .titulo {
+            justify-content: center;
+            width: 100%;
+        }
+        .ptitulo {
+            text-align: left;
+        }
+
+        .preencher {
+            box-sizing: border-box;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5%;
+
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--glass);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            width: 100%;
+            gap: 1rem;
+            max-width: 80%;
+            box-shadow: inset 0 0 1.25rem var(--glass),
+                0rem 0rem 2rem rgba(0, 140, 186, 0.3);
+            backdrop-filter: blur(0.1rem);
+            background: var(--glass_trans);
+            margin: 4% auto 2% auto;
+        }
+        
+        .folhas {
+            display: flexbox;
+            width: 80%;
+            position: relative;
+            align-items: center;
+            margin: 0 auto;
+            margin-bottom: 5%;
+        }
+        .folha {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--glass);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            gap: 1rem;
+            max-width: 80%;
+            box-shadow: inset 0 0 1.25rem var(--glass),
+                0rem 0rem 2rem rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(0.1rem);
+            background: var(--glass_trans);
+            text-align: center;
+            margin-bottom: 5%;
+            margin: 2% auto 2% auto;
+
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*flex-wrap: wrap;*/
+            gap: 10%;
+            margin: 0 auto 0 auto;
+        }
+
+        .service-box {
+            flex: 100% 100%;
+            padding: 1rem 1rem 1rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: 0.2rem solid transparent;
+            transition: 0.5s ease;
+            
+        }
+
+        .service-box:hover {
+            border-color: var(--gradient-black);
+            transform: scale(1.1);
+        }
+
+        .service-box i {
+            font-size: 7rem;
+            color: rgb(0, 140, 186);;
+        }
+
+
+        label {
+            margin-bottom: 2%;
+        }
+        select {
+            margin-bottom: 2%;
+            height: 100%;
+        }
+        section h1 {
+            text-align: center;
+            font-size: xx-large;
+        }
+        section h3 {
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .img {
+            text-align: center;
+        }
+        i {
+            color:rgb(0, 140, 186);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="preencher">
+        <h1>ANÁLISES</h1>
+
+    </div>
+
+    <br>
+    <div class="folhas">
+
+        <div class="folha">
+            <h1>TAMANI</h1>
+
+            <div class="services-container">
+                <div class="service-box">                <!--HABILIDADE 01-->
+                    <i id="link1" class="fa-solid fa-microscope"></i>
+                    <h3>Consultar</h3>
+                </div>
+                <hr>
+                <div class="service-box">                <!--HABILIDADE 01-->
+                    <i id="link2" class="fa-solid fa-vials"></i>
+                    <h3>Certificados</h3>
+                </div>
+            </div>
+    
+        </div>
+        
+        <div class="folha">
+            <h1>SHOW CLEAN</h1>
+            <br>
+
+            <div class="services-container">
+                <div class="service-box">                <!--HABILIDADE 01-->
+                    <i id="link3" class="fas fa-flask"></i>
+
+                    <h3>Consultar</h3>
+            </div>
+            <hr>
+            <div class="service-box">                <!--HABILIDADE 01-->
+                <i id="link4" class="fa-solid fa-mortar-pestle"></i>
+                <h3>Certificados</h3>
+            </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+<script>
+    // Define os links
+    const links = {
+        link1: "",
+        link2: "",
+        link3: "",
+        link4: ""
+    };
+
+    // Adiciona eventos de clique para redirecionar
+    document.getElementById("link1").onclick = function() {
+        window.open(links.link1, '_blank');
+    };
+    document.getElementById("link2").onclick = function() {
+        window.open(links.link2, '_blank');
+    };
+    document.getElementById("link3").onclick = function() {
+        window.open(links.link3, '_blank');
+    };
+    document.getElementById("link4").onclick = function() {
+        window.open(links.link4, '_blank');
+    };
+
+</script>
+
+
+<header>
+    <div class="copyright" style="text-align: center; font-size: smaller; position: relative; top: 90%; margin: 10% auto 0 auto;">
+        &copy; 2024 Del Nero Dados. All rights reserved.
+    </div>
+</header>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tamani: Consulta</title>
+    <script src="https://kit.fontawesome.com/3bb780c407.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        html {
+            min-width: 100%;
+        }
+        body {
+          font-family: "Agdasima", sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: large;
+        }
+        select, input {
+          margin: 0px 0;
+        }
+
+        .tabelas{
+          align-content: center;
+          width: 100%;
+
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          table-layout: fixed;
+          
+
+        }
+
+        th, td {
+          padding: 8px;
+          border-bottom: 1px solid #ddd;
+          text-align: center;
+        }
+
+        tr:hover {
+          background-color: rgba(0, 68, 255, 0.4);
+        }
+
+        .col {
+          text-align: right;
+          font-weight: bold;
+        }
+        .cab {
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .titulo {
+          justify-content: center;
+          width: 100%;
+        }
+        .ptitulo {
+          text-align: left;
+        }
+
+        .preencher {
+          width: 95%;
+          padding: 20vh;
+          transform: translate(50, 50);
+          background: rgba(0,0,0,.3);
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px;
+          align-items: center;
+          border-radius: 10px;
+          margin-bottom: 2%;
+          text-align: center;
+          position: absolute;
+          align-self: center;
+          top: 30px;
+          left: auto;
+          right: auto;
+          
+        }
+
+        .pagina {
+          width: 95%;
+          padding: 30vh;
+          transform: translate(50, 50);
+          background: rgba(255, 255, 255, 0.3);
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px;
+          align-items: center;
+          border-radius: 0px;
+          margin-bottom: 20%;
+          margin-top: 40vh;
+          text-align: center;
+
+          position: absolute;
+          align-self: center;
+        }
+        .box {
+          text-align: center;
+          margin: 2px 2px 2px 2px;
+          
+        }
+        label {
+          margin-bottom: 2%;
+        }
+        select {
+          margin-bottom: 2%;
+        }
+        h1 {
+          text-align: center;
+          font-size: xx-large;
+          margin-top: 2%;
+        }
+        h3 {
+          text-align: center;
+          font-size: x-large;
+        }
+        .img {
+          text-align: center;
+        }
+        @media print {
+          /* Ajuste a escala do conteúdo para caber em uma página */
+          body {
+            -webkit-transform: scale(1.0); /* Para navegadores Webkit */
+            -webkit-transform-origin: top left;
+            transform: scale(1.0);
+            transform-origin: top left;
+          }
+
+          /* Remove margens para maximizar o espaço de impressão */
+          @page {
+            size: A4; /* Define o tamanho da página */
+            margin: 0; /* Remove as margens */
+          }
+        }
+
+        .button {
+          background-color: #04AA6D; /* Green */
+          border: none;
+          color: white;
+          padding: 10px 10px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+        }
+        .button2 {
+          background-color: white; 
+          color: black; 
+          border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+          background-color: #008CBA;
+          color: white;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="box">
+      <br>
+      <h1>CONSULTA DOS CERTIFICADOS</h1>
+      <h2>TAMANI</h2>
+      <label for="produtoNome">Nome do Produto:</label>
+      <select id="produtoNome" onchange="atualizarDatasFabricao()"></select>
+      <br>
+      <!-- <button onclick="consultarPorNome()">Consultar</button> -->
+    </div>
+    
+    <div class="box">
+      <label for="datasFabricao">Data de Fabricação:</label>
+      <select id="datasFabricao"></select>
+      <br>
+
+
+
+      <!-- <button  class="button button2" onclick="consultarProduto()">Consultar</button> -->
+      <button class="button button2" onclick="consultarProduto()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Consultar
+      </button>
+
+    </div>
+
+    <!-- <div class="preencher"></div> -->
+
+    <br><br><br><br>
+    <hr>
+    <div id="resultado"></div>
+    <hr>
+
+    <!-- <div class="pagina"></div> -->
+    <!-- <div class="box">
+      <i class="fa-regular fa-file-pdf"></i>
+      <input type="button" class="button button2" onclick="printDiv('resultado')" value="Salvar"/>
+    </div> -->
+    
+    <div class="box">
+      <button class="button button2" onclick="printDiv('resultado')">
+        <i class="fa-regular fa-file-pdf"></i>
+        Salvar
+      </button>
+    </div>
+
+
+
+
+
+
+<script>
+    // Carregar os nomes dos produtos ao carregar a página
+    window.onload = function() {
+        google.script.run.withSuccessHandler(preencherProdutos).obterNomesProdutos();
+    };
+
+    // Preenche a lista de produtos
+    function preencherProdutos(nomesProdutos) {
+        const selectProduto = document.getElementById('produtoNome');
+        let optionsHTML = '<option value="">Selecione um produto</option>';
+
+        nomesProdutos.forEach(produto => {
+            optionsHTML += `<option value="${produto}">${produto}</option>`;
+        });
+
+        selectProduto.innerHTML = optionsHTML;
+        
+        // Adiciona evento para atualizar datas quando um produto for selecionado
+        selectProduto.onchange = atualizarDatasFabricao;
+    }
+
+    // Atualiza as datas de fabricação ao selecionar um produto
+    function atualizarDatasFabricao() {
+        const produtoSelecionado = document.getElementById('produtoNome').value;
+        const datasFabricao = document.getElementById('datasFabricao');
+        datasFabricao.innerHTML = '<option value="">Selecione uma data</option>';
+
+        if (produtoSelecionado) {
+            google.script.run.withSuccessHandler(preencherDatasFabricao).obterDatasFabricao(produtoSelecionado);
+        }
+    }
+
+    // Preenche as opções de data de fabricação para o produto selecionado
+    function preencherDatasFabricao(datasFabricao) {
+        let optionsHTML = '<option value="">Selecione uma data</option>';
+
+        datasFabricao.forEach(data => {
+            optionsHTML += `<option value="${data}">${data}</option>`;
+        });
+
+        document.getElementById('datasFabricao').innerHTML = optionsHTML;
+    }
+
+    // Consulta o produto com a data de fabricação selecionada
+    function consultarProduto() {
+        const nomeProduto = document.getElementById('produtoNome').value;
+        const dataFabricao = document.getElementById('datasFabricao').value;
+
+        if (nomeProduto && dataFabricao) {
+            // Limpa o resultado anterior
+            document.getElementById('resultado').innerHTML = 'Carregando...';
+            google.script.run.withSuccessHandler(mostrarResultado).buscarProdutoPorNome(nomeProduto, dataFabricao);
+        } else {
+            alert('Por favor, selecione um produto e uma data.');
+        }
+    }
+
+    // Mostra o resultado da consulta na página
+    function mostrarResultado(resultado) {
+        document.getElementById('resultado').innerHTML = resultado;
+    }
+
+    // Função para imprimir o conteúdo de uma div específica
+    function printDiv(divName) {
+        const printContents = document.getElementById(divName).innerHTML;
+        const originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
+</body>
+
+<header>
+    <div class="copyright" style="text-align: center; font-size: smaller; position: relative; top: 90%; margin: 10% auto 0 auto;">
+        &copy; 2024 Del Nero Dados. All rights reserved.
+    </div>
+</header>
+
+</html>

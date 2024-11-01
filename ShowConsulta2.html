@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Clean: Consulta</title>
+    <script src="https://kit.fontawesome.com/3bb780c407.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        html {
+            min-width: 100%;
+        }
+        body {
+          font-family: "Agdasima", sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: large;
+          
+        }
+        select, input {
+          margin: 0px 0;
+        }
+
+        .tabelas{
+          align-content: center;
+          width: 100%;
+
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          table-layout: fixed;
+          
+
+        }
+
+        th, td {
+          padding: 8px;
+          border-bottom: 1px solid #ddd;
+          text-align: center;
+        }
+
+        tr:hover {
+          background-color: rgba(0, 68, 255, 0.4);
+        }
+
+        .col {
+          text-align: right;
+          font-weight: bold;
+        }
+        .cab {
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .titulo {
+          justify-content: center;
+          width: 100%;
+        }
+        .ptitulo {
+          text-align: left;
+        }
+
+        .preencher {
+          width: 95%;
+          padding: 20vh;
+          transform: translate(50, 50);
+          background: rgba(0,0,0,.3);
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px;
+          align-items: center;
+          border-radius: 10px;
+          margin-bottom: 2%;
+          text-align: center;
+          position: absolute;
+          align-self: center;
+          top: 30px;
+          left: auto;
+          right: auto;
+          
+        }
+
+        .pagina {
+          width: 95%;
+          padding: 30vh;
+          transform: translate(50, 50);
+          background: rgba(255, 255, 255, 0.3);
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px;
+          align-items: center;
+          border-radius: 0px;
+          margin-bottom: 20%;
+          margin-top: 40vh;
+          text-align: center;
+
+          position: absolute;
+          align-self: center;
+        }
+        .box {
+          text-align: center;
+          margin: 2px 2px 2px 2px;
+          
+        }
+        label {
+          margin-bottom: 2%;
+        }
+        select {
+          margin-bottom: 2%;
+        }
+        h1 {
+          text-align: center;
+          font-size: xx-large;
+          margin-top: 2%;
+        }
+        h3 {
+          text-align: center;
+          font-size: x-large;
+        }
+        .img {
+          text-align: center;
+        }
+        @media print {
+          /* Ajuste a escala do conteúdo para caber em uma página */
+          body {
+            -webkit-transform: scale(1.0); /* Para navegadores Webkit */
+            -webkit-transform-origin: top left;
+            transform: scale(1.0);
+            transform-origin: top left;
+          }
+
+          /* Remove margens para maximizar o espaço de impressão */
+          @page {
+            size: A4; /* Define o tamanho da página */
+            margin: 0; /* Remove as margens */
+          }
+        }
+        .button {
+          background-color: #04AA6D; /* Green */
+          border: none;
+          color: white;
+          padding: 10px 10px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+        }
+        .button2 {
+          background-color: white; 
+          color: black; 
+          border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+          background-color: #008CBA;
+          color: white;
+        }
+
+        /* Adicione ao seu CSS existente */
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .ui-menu-item {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .ui-menu-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        #produtoNome {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .input-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        #produtoNome {
+            padding-right: 30px; /* Espaço para o ícone */
+        }
+
+    </style>
+
+  <!-- Adicione estas linhas -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+
+    <div class="box">
+      <br>
+      <h1>CONSULTA DOS CERTIFICADOS</h1>
+      <h2>SHOW CLEAN</h2>
+        <label for="produtoNome">Nome do Produto:</label>
+        <input type="text" id="produtoNome" placeholder="Digite o nome do produto">
+      <br>
+      <!-- <button onclick="consultarPorNome()">Consultar</button> -->
+    </div>
+    
+    <div class="box">
+      <label for="datasFabricao">Data de Fabricação:</label>
+      <select id="datasFabricao"></select>
+      <br>
+
+      <!-- <button onclick="consultarProduto()">Consultar</button> -->
+      <button class="button button2" onclick="consultarProduto()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Consultar
+      </button>
+    
+    
+    </div>
+
+    <!-- <div class="preencher"></div> -->
+
+    <br><br><br><br>
+    <hr>
+    <div id="resultado"></div>
+    <hr>
+
+    <!-- <div class="pagina"></div>
+    <div class="box">
+      <input type="button" onclick="printDiv('resultado')" value="Salvar"/>
+    </div> -->
+    
+    <div class="box">
+      <button class="button button2" onclick="printDiv('resultado')">
+        <i class="fa-regular fa-file-pdf"></i>
+        Salvar
+      </button>
+    </div>
+
+    <script>
+        // Carregar os nomes dos produtos ao carregar a página
+        window.onload = function() {
+            google.script.run.withSuccessHandler(preencherProdutos).obterNomesProdutos();
+        };
+
+        // Modifique a função preencherProdutos
+        function preencherProdutos(nomesProdutos) {
+            $("#produtoNome").autocomplete({
+                source: nomesProdutos,
+                minLength: 1,
+                select: function(event, ui) {
+                    // Quando um item é selecionado, atualiza as datas
+                    setTimeout(function() {
+                        atualizarDatasFabricao();
+                    }, 100);
+                }
+            });
+        }
+
+        // Modifique a função atualizarDatasFabricao
+        function atualizarDatasFabricao() {
+            const produtoSelecionado = $("#produtoNome").val();
+            const datasFabricao = document.getElementById('datasFabricao');
+            datasFabricao.innerHTML = '<option value="">Selecione uma data</option>';
+
+            if (produtoSelecionado) {
+                google.script.run.withSuccessHandler(preencherDatasFabricao).obterDatasFabricao(produtoSelecionado);
+            }
+        }
+
+        function preencherDatasFabricao(datasFabricao) {
+            let optionsHTML = '<option value="">Selecione uma data</option>'; // Limpa as opções existentes
+
+            datasFabricao.forEach(data => {
+                optionsHTML += `<option value="${data}">${data}</option>`; // Usar innerHTML para preencher as opções
+            });
+
+            document.getElementById('datasFabricao').innerHTML = optionsHTML; // Preencher com innerHTML
+        }
+
+        function consultarProduto() {
+            const nomeProduto = document.getElementById('produtoNome').value;
+            const dataFabricao = document.getElementById('datasFabricao').value;
+
+            if (nomeProduto && dataFabricao) {
+                google.script.run.withSuccessHandler(mostrarResultado).buscarProdutoPorNome(nomeProduto, dataFabricao);
+            } else {
+                alert('Por favor, selecione um produto e uma data.');
+            }
+        }
+
+        function mostrarResultado(resultado) {
+          document.getElementById('resultado').innerHTML = resultado; // Usar innerHTML para mostrar o resultado
+        }
+
+        function printDiv(divName) {
+          var printContents = document.getElementById(divName).innerHTML;
+          var originalContents = document.body.innerHTML;
+
+          document.body.innerHTML = printContents;
+          window.print();
+          document.body.innerHTML = originalContents;
+
+        }
+    </script>
+</body>
+
+<header>
+  <div class="copyright" style="text-align: center; font-size: smaller; position: relative; top: 90%; margin: 10% auto 0 auto;">
+    &copy; 2024 Del Nero Dados. All rights reserved.
+    </div>
+</header>
+
+</html>
